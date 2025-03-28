@@ -4,25 +4,39 @@ import java.util.*;
 import java.util.List;
 //import com.example.Hotel;
 
-//Controller klasi
 public class HotelController {
-    
-//Smiður
-    public HotelController {
 
+    private List<Hotel> hotelList = new ArrayList<Hotel>();
+
+    // Set up initial hotel list.
+    public HotelController() {
+        // Add all hotels here,
     }
 
-//Leitar af hótelum eftir nafni
     public List<Hotel> searchHotelByName(String name) {
+        List<Hotel> foundHotels = new ArrayList<Hotel>();
 
+        // Loop through all hotels, and add hotels that contain the searched word into a list.
+        for (Hotel hotel:hotelList) {
+            if (hotel.getName().toLowerCase().contains(name.toLowerCase())) {
+                foundHotels.add(hotel);
+            }
+        }
+        return foundHotels;
     }
 
-//Leitar af hotelum eftir svæði
     public List<Hotel> searchHotelByRegion(String region) {
+        List<Hotel> foundHotels = new ArrayList<Hotel>();
 
+        for (Hotel hotel:hotelList) {
+            if (hotel.getRegion().toLowerCase().contains(region.toLowerCase())) {
+                foundHotels.add(hotel);
+            }
+        }
+        return foundHotels;
     }
 
-//Skilar upplýsingum um hótelið
+    ///  REVIEW: What hotel info? What exactly does it do?
     public Hotel getHotelInfo(int hotelID) {
         
     }
