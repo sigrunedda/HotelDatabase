@@ -2,6 +2,7 @@ package com.example.controller;
 import com.example.*;
 import java.util.*;
 import java.util.List;
+//import com.example.Hotel;
 
 //Controller klasi
 public class HotelController {
@@ -23,7 +24,7 @@ public class HotelController {
 
 //Skilar upplýsingum um hótelið
     public Hotel getHotelInfo(int hotelID) {
-
+        
     }
 
 //Bætir við bókun fyrir hótel
