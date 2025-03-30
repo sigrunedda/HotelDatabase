@@ -7,6 +7,7 @@ import org.junit.jupiter.api.*;
 
 
 
+
 public class HotelControllerTest {
     
     static Hotel testHotel = new Hotel();
@@ -16,7 +17,7 @@ public class HotelControllerTest {
         //Stillingar t.d. harðkóða inn upplýsingar fyrir test.
         testHotel.setId(1);
         testHotel.setName("KEA");
-        testHotel.setaddress("bleh");
+        testHotel.setAddress("bleh");
         testHotel.setRatings(5);
         testHotel.setAvailableRooms(110);
     }
