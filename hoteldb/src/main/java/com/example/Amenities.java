@@ -14,36 +14,40 @@ public class Amenities {
     private Boolean wifi;
     private Boolean washingMachine;
 
-    public Amenities (Amenities amenities) {
-        if (amenities != null) {
-            this.spa = amenities.spa;
-            this.breakfast = amenities.breakfast;
-            this.transport = amenities.transport;
-            this.gym = amenities.gym;
-            this.swimmingPool = amenities.swimmingPool;
-            this.daycare = amenities.daycare;
-            this.restaurant = amenities.restaurant;
-            this.miniBar = amenities.miniBar;
-            this.roomService = amenities.roomService;
-            this.bar = amenities.bar;
-            this.wifi = amenities.wifi;
-            this.washingMachine = amenities.washingMachine;
-        } else {
-            this.spa = false;
-            this.breakfast = false;
-            this.transport = false;
-            this.gym = false;
-            this.swimmingPool = false;
-            this.daycare = false;
-            this.restaurant = false;
-            this.miniBar = false;
-            this.roomService = false;
-            this.bar = false;
-            this.wifi = false;
-            this.washingMachine = false;
-        }
+    public Amenities() {
+        this(false, false, false, false, false, false, false, false, false, false, false, false);
     }
 
+    public Amenities(
+        boolean spa,
+        boolean breakfast,
+        boolean transport,
+        boolean gym,
+        boolean swimmingPool,
+        boolean daycare,
+        boolean restaurant,
+        boolean miniBar,
+        boolean roomService,
+        boolean bar,
+        boolean wifi,
+        boolean washingMachine
+    ) {
+        this.spa = spa;
+        this.breakfast = breakfast;
+        this.transport = transport;
+        this.gym = gym;
+        this.swimmingPool = swimmingPool;
+        this.daycare = daycare;
+        this.restaurant = restaurant;
+        this.miniBar = miniBar;
+        this.roomService = roomService;
+        this.bar = bar;
+        this.wifi = wifi;
+        this.washingMachine = washingMachine;
+    }
+    
+
+    
     public void setProperty(String property, Boolean value) {
         switch (property.toLowerCase()) {
             case "spa":

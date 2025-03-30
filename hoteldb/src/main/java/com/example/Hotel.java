@@ -1,80 +1,94 @@
 package com.example;
 
+import java.util.Date;
+
 public class Hotel {
     private int id;
     private String name;
     private String address;
     private String region;
-    Booking booking = new Booking();
-    Amenities amenities = new Amenities();
+    private Booking booking = new Booking(0, 0, new Date(), new Date(), "");
+    private Amenities amenities = new Amenities(true, true, false, true, false, false, true, false, false, true, true, false);
     private int availableRooms;
     private int ratings;
 
-    public int getId(){
+    
+    public int getId() {
         return this.id; 
     }
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
-    public String getaddress(){
+    public String getAddress() {
         return this.address;
     }
 
-    public String getRegion(){
+    public String getRegion() {
         return this.region;
     }
 
-    public int getAvailableRooms(){
+    public int getAvailableRooms() {
         return this.availableRooms;
     }
 
-    public int getRatings(){
+    public int getRatings() {
         return this.ratings;
     }
 
-    public int setId(int id){
+    public Amenities getAmenities() {
+        return this.amenities;
+    }
+
+    
+    public void setId(int id) {
         this.id = id;
     }
 
-    public String setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public String setaddress(String address){
+    public void setAddress(String address) {
         this.address = address;
     }
 
-    public String setRegion(String region){
+    public void setRegion(String region) {
         this.region = region;
     }
 
-    public int setAvailableRooms(int availableRooms){
+    public void setAvailableRooms(int availableRooms) {
         this.availableRooms = availableRooms;
     }
 
-    public int setRatings(int ratings){
+    public void setRatings(int ratings) {
         this.ratings = ratings;
     }
 
-    public void getHotel(){
-
+    public void setAmenities(Amenities amenities) {
+        this.amenities = amenities;
     }
 
-    public boolean addBooking(booking) {
-
-    }
-
-    public void getBooking() {
+    
+    public void getHotel() {
         
     }
 
-    public void setBookings() {
+    public boolean addBooking(Booking booking) {
+        this.booking = booking;
+        return true;
+    }
 
+    public Booking getBooking() {
+        return this.booking;
+    }
+
+    public void setBookings() {
+        
     }
 
     public int updateAvailableRooms() {
-
+        return this.availableRooms;
     }
 }

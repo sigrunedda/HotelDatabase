@@ -2,19 +2,19 @@ package com.example;
 
 public class BookingDB {
     
-    saveBooking(Booking booking) {
+    public void saveBooking(Booking booking) {
 
     }
 
-    removeBooking(int bookingID) {
+    public void removeBooking(int bookingID) {
 
     }
 
-    getBooking(int bookinID) {
+    public Booking getBooking(int bookinID) {
 
     }
 
-    getBookingsByHotel(int hotelID){
-
+    public List<Booking> getBookingsByHotel(int hotelID){
+        
     }
 }
