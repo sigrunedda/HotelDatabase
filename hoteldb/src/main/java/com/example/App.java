@@ -17,6 +17,7 @@ public class App {
             System.out.println("Address: " + hotel.getAddress());
             System.out.println("Available Rooms: " + hotel.getAvailableRooms());
             System.out.println("Ratings: " + hotel.getRatings());
+            System.out.println("Price: " + hotel.getPrice());
         } else {
             System.out.println("No hotel found with ID " + hotelId);
         }

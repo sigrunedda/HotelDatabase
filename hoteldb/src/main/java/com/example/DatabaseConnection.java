@@ -28,6 +28,7 @@ public class DatabaseConnection {
                 hotel.setRegion(rs.getString("region"));
                 hotel.setAvailableRooms(rs.getInt("availablerooms"));
                 hotel.setRatings(rs.getInt("ratings"));
+                hotel.setPrice(rs.getInt("price"));
                 // amenities yrði sótt sérstaklega ef það er í annarri töflu
                 return hotel;
             }
@@ -84,6 +85,7 @@ public class DatabaseConnection {
                 hotel.setRegion(rs.getString("region"));
                 hotel.setAvailableRooms(rs.getInt("availablerooms"));
                 hotel.setRatings(rs.getInt("ratings"));
+                hotel.setPrice(rs.getInt("price"));
                 hotels.add(hotel);
             }
         } catch (Exception e) {
