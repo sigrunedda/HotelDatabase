@@ -67,6 +67,10 @@ public class Hotel {
         this.ratings = ratings;
     }
 
+    public int getPrice(){
+        return this.price;
+    }
+
     public void setAmenities(Amenities amenities) {
         this.amenities = amenities;
     }
@@ -91,10 +95,6 @@ public class Hotel {
 
     public int updateAvailableRooms() {
         return this.availableRooms;
-    }
-
-    public int getPrice(){
-        return this.price;
     }
 
     public void setPrice(int price){
