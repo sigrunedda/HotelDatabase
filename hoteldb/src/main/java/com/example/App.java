@@ -22,6 +22,8 @@ public class App {
             System.out.println("No hotel found with ID " + hotelId);
         }
 
+
+
         scanner.close();
     }
 }
