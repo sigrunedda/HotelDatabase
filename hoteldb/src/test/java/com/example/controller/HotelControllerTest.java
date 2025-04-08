@@ -1,5 +1,4 @@
 package com.example.controller;
-import com.example.DatabaseConnection;
 import com.example.Hotel;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -11,9 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.jupiter.api.*;
-
-
-
 
 public class HotelControllerTest {
     
