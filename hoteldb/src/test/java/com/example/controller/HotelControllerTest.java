@@ -1,4 +1,5 @@
 package com.example.controller;
+import com.example.DatabaseConnection;
 import com.example.Hotel;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -14,13 +15,10 @@ public class HotelControllerTest {
 
     @BeforeAll
     public static void setUpTest() {
-        //Stillingar t.d. harðkóða inn upplýsingar fyrir test.
-        testHotel.setId(1);
-        testHotel.setName("KEA");
-        testHotel.setAddress("bleh");
-        testHotel.setRatings(5);
-        testHotel.setAvailableRooms(110);
+        testHotel = DatabaseConnection.getHotelFromDB(1);
+        Assertions.assertNotNull(testHotel, "Hotel not found in DB!");
     }
+
 
 
     @Test 
@@ -31,6 +29,43 @@ public class HotelControllerTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void testGetRegion() {
+        String expected = "Suðurnes";
+        String actual = testHotel.getRegion();
+
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testGetName() {
+        String expected = "Blue Lagoon Retreat";
+        String actual = testHotel.getName();
+
+        assertEquals(expected, actual);
+    }
+
+
+    
+    @Test
+    public void testUpdateAvailableRoomsInDB() {
+        int newRoomCount = 95;
+    
+        DatabaseConnection.updateAvailableRooms(testHotel.getId(), newRoomCount);
+        
+        Hotel updatedHotel = DatabaseConnection.getHotelFromDB(testHotel.getId());
+        assertEquals(newRoomCount, updatedHotel.getAvailableRooms());
+    }
+
+    @Test
+    public void testPrintHotelStuff() {
+        System.out.println(testHotel.getId());
+        System.out.println(testHotel.getName());
+        System.out.println(testHotel.getRegion());
+        System.out.println(testHotel.getAddress());
+        System.out.println(testHotel.getAvailableRooms());
+    }
+
 
     /**@Test 
     public void getHotelInfo(int hotelID){
@@ -38,5 +73,4 @@ public class HotelControllerTest {
         
     }*/
 }
-
 
