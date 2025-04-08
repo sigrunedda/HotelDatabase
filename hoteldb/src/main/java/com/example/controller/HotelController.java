@@ -1,101 +1,91 @@
 package com.example.controller;
-import com.example.*;
 
-//import com.example.Hotel;
+import com.example.*;
 import java.util.*;
 
-//Controller klasi
 public class HotelController {
-    private List<Hotel> hotels;
-
-//Smiður
-    public HotelController() {
-        hotels = new ArrayList<>();
+    
+    public Hotel getHotelInfo(int hotelID) {
+        return DatabaseConnection.getHotelFromDB(hotelID);
     }
 
-    public void addHotel(Hotel hotel) {
-        hotels.add(hotel);
+    public List<Hotel> getAllHotels() {
+        return DatabaseConnection.getAllHotelsFromDB();
+    }    
+    
+    public boolean updateAvailableRooms(int hotelID, int rooms) {
+        Hotel hotel = DatabaseConnection.getHotelFromDB(hotelID);
+        if (hotel != null) {
+            DatabaseConnection.updateAvailableRooms(hotelID, rooms);
+            return true;
+        }
+        return false;
     }
-//Leitar af hótelum eftir nafni
-    public List<Hotel> searchHotelByName(String name) {
+
+    
+    public List<Hotel> searchHotelByName(List<Hotel> hotels, String name) {
         List<Hotel> result = new ArrayList<>();
         for (Hotel hotel : hotels) {
-             if (hotel.getName() != null && hotel.getName().toLowerCase().contains(name.toLowerCase())) {
-                  result.add(hotel);
-             }
+            if (hotel.getName() != null && hotel.getName().toLowerCase().contains(name.toLowerCase())) {
+                result.add(hotel);
+            }
         }
         return result;
     }
 
-//Leitar af hotelum eftir svæði
-    public List<Hotel> searchHotelByRegion(String region) {
+    
+    public List<Hotel> searchHotelByRegion(List<Hotel> hotels, String region) {
         List<Hotel> result = new ArrayList<>();
         for (Hotel hotel : hotels) {
             if (hotel.getRegion() != null && hotel.getRegion().equalsIgnoreCase(region)) {
-                 result.add(hotel);
+                result.add(hotel);
             }
         }
         return result;
     }
 
-//Skilar upplýsingum um hótelið
-    public Hotel getHotelInfo(int hotelID) {
-        for (Hotel hotel : hotels) {
-            if (hotel.getId() == hotelID) {
-                return hotel;
-            }
-       }
-       return null;
-    }
-
-//Bætir við bókun fyrir hótel 
+    
     public boolean addBooking(int hotelID, Booking booking) {
-        Hotel hotel = getHotelInfo(hotelID);
-        if (hotel != null) {
-             return hotel.addBooking(booking);
+        if (checkRoomAvailability(hotelID)) {
+            new BookingDB().saveBooking(booking);
+            int newRoomCount = DatabaseConnection.getHotelFromDB(hotelID).getAvailableRooms() - 1;
+            DatabaseConnection.updateAvailableRooms(hotelID, newRoomCount);
+            return true;
         }
         return false;
     }
-
-//Hættir við bókun fyrir hótel
+    
     public boolean cancelBooking(int bookingID) {
-        for (Hotel hotel : hotels) {
-            Booking currentBooking = hotel.getBooking();
-            if (currentBooking != null && currentBooking.getBookingId() == bookingID) {
-                // Clear the booking. In a multi-booking design, you would remove this booking from a list.
-                hotel.addBooking(null);
-                return true;
+        Booking booking = new BookingDB().getBooking(bookingID);
+        if (booking != null) {
+            new BookingDB().removeBooking(bookingID);
+            Hotel hotel = DatabaseConnection.getHotelFromDB(booking.getHotelId());
+            if (hotel != null) {
+                int newRoomCount = hotel.getAvailableRooms() + 1;
+                DatabaseConnection.updateAvailableRooms(hotel.getId(), newRoomCount);
             }
+            return true;
         }
         return false;
     }
+    
 
-//Uppfærum 
     public boolean updateAmenities(int hotelID, Amenities amenities) {
-        Hotel hotel = getHotelInfo(hotelID);
+        Hotel hotel = DatabaseConnection.getHotelFromDB(hotelID);
         if (hotel != null) {
-            hotel.setAmenities(amenities);
+            DatabaseConnection.updateAmenitiesInDB(hotelID, amenities);
+            hotel.setAmenities(amenities);  // update in-memory object
             return true;
         }
         return false;
     }
+    
 
-    public boolean updateAvailableRooms(int hotelID, int rooms){
-        Hotel hotel = getHotelInfo(hotelID);
-        if (hotel != null) {
-            hotel.setAvailableRooms(rooms);
-            return true;
-        }
-        return false;
-    }
-
-    public boolean checkRoomAvailability(int hotelID, Date fromDate, Date toDate) {
-        Hotel hotel = getHotelInfo(hotelID);
+    public boolean checkRoomAvailability(int hotelID) {
+        Hotel hotel = DatabaseConnection.getHotelFromDB(hotelID);
         if (hotel != null) {
             return hotel.getAvailableRooms() > 0;
         }
         return false;
     }
-
-
 }

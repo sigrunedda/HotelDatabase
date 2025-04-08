@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.1" name="com.example.controller.HotelControllerTest" time="0.057" tests="1" errors="1" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" version="3.0.1" name="com.example.controller.HotelControllerTest" time="11.185" tests="5" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="21"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
@@ -7,12 +7,13 @@
     <property name="java.vm.vendor" value="Eclipse Adoptium"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.vendor.url" value="https://adoptium.net/"/>
+    <property name="user.timezone" value="Atlantic/Reykjavik"/>
     <property name="os.name" value="Mac OS X"/>
     <property name="java.vm.specification.version" value="21"/>
     <property name="user.country" value="IS"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="/Users/danni/Library/Java/JavaVirtualMachines/temurin-21.0.2/Contents/Home/lib"/>
-    <property name="sun.java.command" value="/Users/danni/Desktop/HIVor2025/HBV401G/HotelDatabase/hoteldb/target/surefire/surefirebooter-20250408142759875_3.jar /Users/danni/Desktop/HIVor2025/HBV401G/HotelDatabase/hoteldb/target/surefire 2025-04-08T14-27-59_743-jvmRun1 surefire-20250408142759875_1tmp surefire_0-20250408142759875_2tmp"/>
+    <property name="sun.java.command" value="/Users/danni/Desktop/HIVor2025/HBV401G/HotelDatabase/hoteldb/target/surefire/surefirebooter-20250408144903772_3.jar /Users/danni/Desktop/HIVor2025/HBV401G/HotelDatabase/hoteldb/target/surefire 2025-04-08T14-49-03_613-jvmRun1 surefire-20250408144903772_1tmp surefire_0-20250408144903772_2tmp"/>
     <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="jdk.debug" value="release"/>
     <property name="test" value="com.example.controller.HotelControllerTest"/>
@@ -30,7 +31,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="apple.awt.application.name" value="ForkedBooter"/>
-    <property name="surefire.real.class.path" value="/Users/danni/Desktop/HIVor2025/HBV401G/HotelDatabase/hoteldb/target/surefire/surefirebooter-20250408142759875_3.jar"/>
+    <property name="surefire.real.class.path" value="/Users/danni/Desktop/HIVor2025/HBV401G/HotelDatabase/hoteldb/target/surefire/surefirebooter-20250408144903772_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.runtime.version" value="21.0.2+13-LTS"/>
@@ -60,9 +61,12 @@
     <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
     <property name="java.class.version" value="65.0"/>
   </properties>
-  <testcase name="" classname="com.example.controller.HotelControllerTest" time="0.057">
-    <error message="No ParameterResolver registered for parameter [int arg0] in method [public static void com.example.controller.HotelControllerTest.setUpTest(int)]." type="org.junit.jupiter.api.extension.ParameterResolutionException"><![CDATA[org.junit.jupiter.api.extension.ParameterResolutionException: No ParameterResolver registered for parameter [int arg0] in method [public static void com.example.controller.HotelControllerTest.setUpTest(int)].
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
-]]></error>
+  <testcase name="testUpdateAvailableRooms" classname="com.example.controller.HotelControllerTest" time="5.559">
+    <system-out><![CDATA[Updated hotel 1 with 99 available rooms.
+]]></system-out>
   </testcase>
+  <testcase name="testCheckRoomAvailability" classname="com.example.controller.HotelControllerTest" time="1.358"/>
+  <testcase name="testGetHotelInfo" classname="com.example.controller.HotelControllerTest" time="1.369"/>
+  <testcase name="testSearchHotelByRegion" classname="com.example.controller.HotelControllerTest" time="1.36"/>
+  <testcase name="testSearchHotelByName" classname="com.example.controller.HotelControllerTest" time="1.45"/>
 </testsuite>
