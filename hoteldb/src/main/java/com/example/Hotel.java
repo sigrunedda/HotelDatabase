@@ -11,6 +11,7 @@ public class Hotel {
     private Amenities amenities = new Amenities(true, true, false, true, false, false, true, false, false, true, true, false);
     private int availableRooms;
     private int ratings;
+    private int price;
 
     
     public int getId() {
@@ -91,4 +92,14 @@ public class Hotel {
     public int updateAvailableRooms() {
         return this.availableRooms;
     }
+
+    public int getPrice(){
+        return this.price;
+    }
+
+    public void setPrice(int price){
+        this.price = price;
+    }
+
+
 }
