@@ -48,7 +48,7 @@ public class HotelController {
        return null;
     }
 
-//Bætir við bókun fyrir hótel
+//Bætir við bókun fyrir hótel 
     public boolean addBooking(int hotelID, Booking booking) {
         Hotel hotel = getHotelInfo(hotelID);
         if (hotel != null) {

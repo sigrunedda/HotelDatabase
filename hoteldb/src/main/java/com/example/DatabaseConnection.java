@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class DatabaseConnection {
-    public static void main(String[] args) {
-        // Neon connection string
+
+    public static Hotel getHotelFromDB(int hotelId) {
         String url = "jdbc:postgresql://ep-lingering-voice-a55okvue-pooler.us-east-2.aws.neon.tech/hotel?sslmode=require";
         String user = "hotel_owner";
         String password = "npg_nWObTCF4kms9";
@@ -15,10 +15,18 @@ public class DatabaseConnection {
         try {
             Connection conn = DriverManager.getConnection(url, user, password);
             Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM Hotel");
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Hotel WHERE id = " + hotelId + ";");
 
-            while (rs.next()) {
-                System.out.println("Hotel: " + rs.getString("amenities"));
+            if (rs.next()) {
+                Hotel hotel = new Hotel();
+                hotel.setId(rs.getInt("id"));
+                hotel.setName(rs.getString("name"));
+                hotel.setAddress(rs.getString("address"));
+                hotel.setRegion(rs.getString("region"));
+                hotel.setAvailableRooms(rs.getInt("availablerooms"));
+                hotel.setRatings(rs.getInt("ratings"));
+                // amenities yrði sótt sérstaklega ef það er í annarri töflu
+                return hotel;
             }
 
             rs.close();
@@ -28,5 +36,7 @@ public class DatabaseConnection {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        return null;
     }
 }
