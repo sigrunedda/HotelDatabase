@@ -4,9 +4,25 @@ import com.example.*;
 import java.util.*;
 
 public class HotelController {
+<<<<<<< Updated upstream
     
     public Hotel getHotelInfo(int hotelID) {
         return DatabaseConnection.getHotelFromDB(hotelID);
+=======
+<<<<<<< Updated upstream
+    private List<Hotel> hotels;
+
+//Smiður
+    public HotelController() {
+        hotels = new ArrayList<>();
+=======
+    private BookingDB bookingDB;
+    private hotelDB HotelDB;
+
+//Smiður
+    public HotelController {
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
     }
 
     public List<Hotel> getAllHotels() {

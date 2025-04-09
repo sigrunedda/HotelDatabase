@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 import org.junit.jupiter.api.*;
 
@@ -43,7 +44,7 @@ public class HotelControllerTest {
         List<Hotel> hotels = new ArrayList<>();
         hotels.add(controller.getHotelInfo(1));
 
-        List<Hotel> results = controller.searchHotelByName(hotels, "blue");
+        List<Hotel> results = controller.searchHotelByName("blue");
         assertFalse(results.isEmpty(), "Should find at least one hotel with 'blue' in the name.");
     }
 
@@ -52,13 +53,13 @@ public class HotelControllerTest {
         List<Hotel> hotels = new ArrayList<>();
         hotels.add(controller.getHotelInfo(1));
 
-        List<Hotel> results = controller.searchHotelByRegion(hotels, "Suðurnes");
+        List<Hotel> results = controller.searchHotelByRegion("Suðurnes");
         assertFalse(results.isEmpty(), "Should find at least one hotel in region 'Suðurnes'.");
     }
 
     @Test
     public void testCheckRoomAvailability() {
-        boolean available = controller.checkRoomAvailability(1);
+        boolean available = controller.checkRoomAvailability(1, new Date(), new Date());
         assertTrue(available, "Hotel should have available rooms.");
     }
 
